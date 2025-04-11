@@ -1,0 +1,6 @@
+﻿services:
+  mypets:
+    image: mypets
+    build:
+      context: .
+      dockerfile: MyPets/Dockerfile
