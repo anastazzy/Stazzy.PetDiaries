@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MyPets.DataAccess\MyPets.DataAccess.csproj" />
+    <ProjectReference Include="..\MyPets.DataAccess\MyPets.DataAccess.csproj" />
   </ItemGroup>
-
 </Project>
