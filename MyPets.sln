@@ -4,11 +4,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\MyPets.API", "src\MyPet
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D788AC60-9978-4D2B-A269-17195C843362}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPets.Application", "MyPets.Application\MyPets.Application.csproj", "{AD89DEA7-DA8A-482E-9C97-99F4AA4C1386}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\MyPets.Application", "src\MyPets.Application\MyPets.Application.csproj", "{AD89DEA7-DA8A-482E-9C97-99F4AA4C1386}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPets.DataAccess", "MyPets.DataAccess\MyPets.DataAccess.csproj", "{65D6B23B-9E22-490C-9EDF-20DC8BA0CEA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\MyPets.DataAccess", "src\MyPets.DataAccess\MyPets.DataAccess.csproj", "{65D6B23B-9E22-490C-9EDF-20DC8BA0CEA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPets.Domain", "MyPets.Domain\MyPets.Domain.csproj", "{098A61CE-F734-4D8F-A0B2-F09CB9D802D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\MyPets.Domain", "src\MyPets.Domain\MyPets.Domain.csproj", "{098A61CE-F734-4D8F-A0B2-F09CB9D802D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
