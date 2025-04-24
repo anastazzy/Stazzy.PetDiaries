@@ -31,10 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\MyPets.Application\MyPets.Application.csproj" />
     <ProjectReference Include="..\MyPets.DataAccess\MyPets.DataAccess.csproj" />
   </ItemGroup>
 </Project>

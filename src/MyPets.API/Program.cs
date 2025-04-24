@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using MyPets.Application.Contracts;
+using MyPets.Application.Services;
 using MyPets.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<MyPetsDbContext>(x =>
     x.UseNpgsql(builder.Configuration.GetConnectionString("Postgre")));
+
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 
 var app = builder.Build();
 

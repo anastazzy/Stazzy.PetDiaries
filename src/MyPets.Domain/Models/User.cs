@@ -4,8 +4,18 @@ namespace MyPets.Domain.Models;
 
 public class User
 {
-    public long Id { get; set; }
-    public required string Name { get; set; }
-    public required string Email { get; set; }
-    public required string PasswordHash { get; set; }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string PasswordHash { get; set; }
+    public string Salt { get; set; }
+
+    public User(string name, string email, string passwordHash, string salt, Guid? id = null)
+    {
+        Id = id ?? Guid.NewGuid();
+        Name = name;
+        Email = email;
+        PasswordHash = passwordHash;
+        Salt = salt;
+    }
 }
