@@ -23,12 +23,12 @@ public class PasswordHasher : IPasswordHasher
 
         var hashed = GenerateHash(password, salt);
 
-        return new GenerateHashResult(Convert.ToBase64String(salt), hashed);
+        return new GenerateHashResult(hashed, Convert.ToBase64String(salt));
     }
 
     public bool Verify(string password, string hash, string salt)
     {
-        var enteredHash = GenerateHash(password, Encoding.ASCII.GetBytes(salt));
+        var enteredHash = GenerateHash(password, Convert.FromBase64String(salt));
         return enteredHash == hash;
     }
 
