@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace MyPets.Domain.Models;
+﻿namespace MyPets.Domain.Models;
 
 public class User
 {
@@ -9,6 +7,10 @@ public class User
     public string Email { get; set; }
     public string PasswordHash { get; set; }
     public string Salt { get; set; }
+
+    public User()
+    {
+    }
 
     public User(string name, string email, string passwordHash, string salt, Guid? id = null)
     {

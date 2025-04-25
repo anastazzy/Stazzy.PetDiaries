@@ -1,5 +1,8 @@
-﻿namespace MyPets.Application.Requests;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record RegisterUserRequest(string Name, string Email, string Password)
-{
-}
+namespace MyPets.Application.Requests;
+
+public record RegisterUserRequest(
+    [Required] string Name, 
+    [Required] string Email, 
+    [Required]string Password);

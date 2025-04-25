@@ -1,3 +1,5 @@
-﻿namespace MyPets.Application.Requests;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record LoginUserRequest(string Email, string Password);
+namespace MyPets.Application.Requests;
+
+public record LoginUserRequest([Required] string Email, [Required] string Password);
