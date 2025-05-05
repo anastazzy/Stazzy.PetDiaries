@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyPets.Application.Contracts;
 using MyPets.Application.Requests;
 
@@ -26,6 +27,15 @@ public class UserController : ControllerBase
     public async Task<ActionResult> LoginAsync([FromBody] LoginUserRequest request)
     {
         var token = await _userService.LoginAsync(request);
+        
+        HttpContext.Response.Cookies.Append("tasty-coocies", token);// лучше строку хранить в другом месте
         return Ok(token);
+    }
+
+    [Authorize]
+    [HttpGet("info")]
+    public async Task<ActionResult> GetInfo()
+    {
+        return Ok(1);
     }
 }
