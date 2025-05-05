@@ -13,6 +13,7 @@ builder.Services.AddDbContext<MyPetsDbContext>(x =>
     x.UseNpgsql(builder.Configuration.GetConnectionString("Postgre")));
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
+builder.Services.Configure<CookiesOptions>(builder.Configuration.GetSection("CookiesOptions"));
 
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyPets.Application.Contracts;
+using MyPets.Application.Dtos;
 using MyPets.Application.Requests;
 
 namespace MyPets.API.Controllers;
@@ -10,10 +11,12 @@ namespace MyPets.API.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
+    private readonly string _cookiesName;
 
-    public UserController(IUserService userService)
+    public UserController(IUserService userService, IConfiguration configuration)
     {
         _userService = userService;
+        _cookiesName = configuration.GetSection(nameof(CookiesOptions)).Get<CookiesOptions>()?.AuthName ?? string.Empty;
     }
     
     [HttpPost]
@@ -28,7 +31,7 @@ public class UserController : ControllerBase
     {
         var token = await _userService.LoginAsync(request);
         
-        HttpContext.Response.Cookies.Append("tasty-coocies", token);// лучше строку хранить в другом месте
+        HttpContext.Response.Cookies.Append(_cookiesName, token);
         return Ok(token);
     }
 
