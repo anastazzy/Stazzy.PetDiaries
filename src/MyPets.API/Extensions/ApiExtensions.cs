@@ -11,7 +11,7 @@ public static class ApiExtensions
     {
         var jwtOptions = configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>()?.SecretKey ?? string.Empty;
         var cookiesName = configuration.GetSection(nameof(CookiesOptions)).Get<CookiesOptions>()?.AuthName ?? string.Empty;
-        
+
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {

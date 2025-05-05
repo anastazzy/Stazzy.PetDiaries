@@ -18,21 +18,29 @@ public class UserController : ControllerBase
         _userService = userService;
         _cookiesName = configuration.GetSection(nameof(CookiesOptions)).Get<CookiesOptions>()?.AuthName ?? string.Empty;
     }
-    
+
     [HttpPost]
     public async Task<ActionResult> RegisterAsync([FromBody] RegisterUserRequest request)
     {
         var newUserId = await _userService.RegisterAsync(request);
         return Ok();
     }
-    
+
     [HttpPost("login")]
     public async Task<ActionResult> LoginAsync([FromBody] LoginUserRequest request)
     {
         var token = await _userService.LoginAsync(request);
-        
+
         HttpContext.Response.Cookies.Append(_cookiesName, token);
         return Ok(token);
+    }
+
+    [Authorize]
+    [HttpPost("logout")]
+    public async Task<ActionResult> LogoutAsync()
+    {
+        HttpContext.Response.Cookies.Delete(_cookiesName);
+        return Ok();
     }
 
     [Authorize]
