@@ -7,6 +7,11 @@ public class User : BaseModel
     public string Email { get; set; }
     public string PasswordHash { get; set; }
     public string Salt { get; set; }
+    
+    public GenderType? Gender { get; set; }
+    
+    public List<Pet>? Pets { get; set; }
+    public List<Event>? Events { get; set; }
 
     public User()
     {

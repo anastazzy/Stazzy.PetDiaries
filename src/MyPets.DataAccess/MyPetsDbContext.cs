@@ -11,8 +11,35 @@ public sealed class MyPetsDbContext : DbContext
 
     public DbSet<User> Users { get; set; }
 
+    public DbSet<Pet> Pets { get; set; }
+
+    public DbSet<Food> Foods { get; set; }
+
+    public DbSet<Event> Events { get; set; }
+
+    public DbSet<Symptom> Symptoms { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>()
+            .HasMany(e => e.Pets)
+            .WithMany(e => e.Users)
+            .UsingEntity("UserPets");
+        
+        modelBuilder.Entity<Pet>()
+            .HasMany(e => e.Foods)
+            .WithMany(e => e.Pets)
+            .UsingEntity("PetFoods");
+        
+        modelBuilder.Entity<User>()
+            .HasMany(e => e.Events)
+            .WithMany(e => e.Users)
+            .UsingEntity("UserEvents");
+        
+        modelBuilder.Entity<Pet>()
+            .HasMany(e => e.Events)
+            .WithMany(e => e.Pets)
+            .UsingEntity("PetEvents");
     }
 
     public override int SaveChanges()
