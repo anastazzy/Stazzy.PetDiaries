@@ -4,6 +4,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace MyPets.DataAccess.Migrations
 {
     /// <inheritdoc />
@@ -19,7 +21,8 @@ namespace MyPets.DataAccess.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     TimeMode = table.Column<int>(type: "integer", nullable: false),
-                    Notes = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Notes = table.Column<string>(type: "text", nullable: true),
                     CreatedDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     UpdatedDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
@@ -253,6 +256,20 @@ namespace MyPets.DataAccess.Migrations
                         principalTable: "UserEvent",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Symptoms",
+                columns: new[] { "Id", "Category", "Description", "Name", "PetHealthPropertyInMomentId" },
+                values: new object[,]
+                {
+                    { 1, null, "", "Слезоточивость", null },
+                    { 2, null, "Температура тела меньше 37,5 и больше 39", "Температура", null },
+                    { 3, null, "", "Чесотка", null },
+                    { 4, null, "", "Вялость", null },
+                    { 5, null, "", "ОТказ от корма", null },
+                    { 6, null, "", "Рвота", null },
+                    { 7, null, "", "Диарея", null }
                 });
 
             migrationBuilder.CreateIndex(

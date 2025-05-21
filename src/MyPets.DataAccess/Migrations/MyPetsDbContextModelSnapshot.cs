@@ -33,8 +33,11 @@ namespace MyPets.DataAccess.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Notes")
+                    b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Notes")
                         .HasColumnType("text");
 
                     b.Property<int>("TimeMode")
@@ -178,6 +181,50 @@ namespace MyPets.DataAccess.Migrations
                     b.HasIndex("PetHealthPropertyInMomentId");
 
                     b.ToTable("Symptoms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "",
+                            Name = "Слезоточивость"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Температура тела меньше 37,5 и больше 39",
+                            Name = "Температура"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "",
+                            Name = "Чесотка"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "",
+                            Name = "Вялость"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "",
+                            Name = "ОТказ от корма"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "",
+                            Name = "Рвота"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "",
+                            Name = "Диарея"
+                        });
                 });
 
             modelBuilder.Entity("MyPets.Domain.Models.User", b =>

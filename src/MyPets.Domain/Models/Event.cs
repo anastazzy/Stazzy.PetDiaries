@@ -8,7 +8,8 @@ public class Event : BaseModel
 
     public TimeMode TimeMode { get; set; }
 
-    public string Notes { get; set; }
+    public string Name { get; set; }
+    public string? Notes { get; set; }
     // хозяин сам придумывает процедуры, упражнения и тд
     // ставит напоминания и пожпись к ним, выбирает где оно будет
     
